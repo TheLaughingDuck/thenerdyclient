@@ -1,0 +1,26 @@
+Package: thenerdyclient
+Title: A nerdy api R wrapper
+Version: 0.0.0.9000
+Authors@R: 
+  c(person(given="Simon",
+           family="Jorstedt",
+           email="jorstedtsimon@gmail.com",
+           role = c("aut", "cre")),
+    person(given="Muditha",
+           family="Cherangani",
+           email="mcherangan@gmail.com",
+           role=c("aut")))
+Description: This package connects to various nerdy api's, letting users query data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+Imports: 
+    dplyr,
+    magrittr

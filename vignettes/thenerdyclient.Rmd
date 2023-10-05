@@ -1,0 +1,31 @@
+---
+title: "thenerdyclient"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{thenerdyclient}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# The Nerdy Client
+The nerdy client is an R package that lets users interact with some nerdy API's. So far only the lord of the rings api. This vignette should give you as a first time user a good start on how to use this package. First let's load this package.
+
+```{r setup}
+library(thenerdyclient)
+```
+
+
+# `lotr` function
+The `lotr` function can be used to call the lotr api.
+
+```{r}
+# Here is an example
+```
+
