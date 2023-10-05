@@ -2,5 +2,10 @@
 
 export(lotr)
 importFrom(dplyr,arrange)
+importFrom(dplyr,as_tibble)
 importFrom(dplyr,filter)
+importFrom(httr,GET)
+importFrom(httr,add_headers)
+importFrom(httr,content)
+importFrom(jsonlite,fromJSON)
 importFrom(magrittr,"%>%")
