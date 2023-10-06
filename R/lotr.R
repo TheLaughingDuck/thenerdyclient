@@ -9,16 +9,18 @@
 #' @return A short description of the output format.
 #'
 #' @importFrom magrittr %>%
-#' @importFrom dplyr arrange filter as_tibble
+#' @importFrom dplyr arrange filter as_tibble rename select left_join join_by
 #' @importFrom httr GET add_headers content
 #' @importFrom jsonlite fromJSON
+#' @importFrom stringr str_count
+#' @importFrom rlang .data
 #'
 #' @source [The one API](https://the-one-api.dev/)
 #'
 #' @export lotr
 
 
-lotr <- function(arg1, arg2){
+lotr <- function(arg1 = "character", arg2){
 
   # ---V--- CHECK INPUT ---V---
   # Check arg1 argument
@@ -29,7 +31,7 @@ lotr <- function(arg1, arg2){
   # ---^--- CHECK INPUT ---^---
 
   base_url <- "https://the-one-api.dev/v2"
-  end_point <- "/character"
+  end_point <- paste0("/", arg1) #"/quote"
   query_url <- paste0(base_url, end_point)
   response <- GET(query_url, add_headers(Authorization=paste("Bearer", Sys.getenv("lotr_id"))))
 
@@ -55,4 +57,35 @@ lotr <- function(arg1, arg2){
 #response <- lotr()
 
 
+get_shiny_data <- function(character = "", movie = ""){
+  character_name_string <- character #""
+  movie_name_string <- movie #""
 
+  char_response <- lotr("character") %>%
+    rename(character_id = "_id")
+
+  movie_response <- lotr("movie") %>%
+    rename("movie_id" = "_id") %>%
+    rename("title" = "name")
+
+  # Code to create a dataframe of all quotes with associated character
+  quote_response <- lotr("quote")
+  quote_full_info <- quote_response %>%
+    # Renaming columns
+    rename("character_id" = "character") %>%
+    rename("movie_id" = "movie") %>%
+    select(-c("id")) %>% # Repeated in `_id` column
+
+    # Join character, then join movie, then remove some unused columns
+    left_join(y=char_response, by=join_by("character_id")) %>%
+    left_join(y=movie_response, by=join_by("movie_id")) %>%
+    select(-c("_id", "movie_id", "wikiUrl"))
+
+  # Code to filter out quotes by a particular character and movie
+  output <- quote_full_info %>%
+    filter(str_count(string=.data$name, pattern=character_name_string) > 0) %>%
+    filter(str_count(string=.data$title, pattern=movie_name_string) > 0) %>%
+    select(c("name", "title", "dialog"))
+
+  return(output)
+}

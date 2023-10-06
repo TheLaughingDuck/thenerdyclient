@@ -25,4 +25,6 @@ Imports:
     dplyr,
     httr,
     jsonlite,
-    magrittr
+    magrittr,
+    rlang,
+    stringr

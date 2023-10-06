@@ -7,7 +7,7 @@
 \href{https://the-one-api.dev/}{The one API}
 }
 \usage{
-lotr(arg1, arg2)
+lotr(arg1 = "character", arg2)
 }
 \arguments{
 \item{arg1}{A short description of the arg1 argument. Must specify: accepted format.}
