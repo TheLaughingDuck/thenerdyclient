@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/TheLaughingDuck/thenerdyclient/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TheLaughingDuck/thenerdyclient/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 # thenerdyclient
 An R package that can communicate with a nerdy API.
 
