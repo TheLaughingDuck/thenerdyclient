@@ -2,21 +2,19 @@
 % Please edit documentation in R/lotr.R
 \name{lotr}
 \alias{lotr}
-\title{LOTR}
+\title{lotr()}
 \source{
 \href{https://the-one-api.dev/}{The one API}
 }
 \usage{
-lotr(arg1 = "character", arg2)
+lotr(end_point_argument = "movie")
 }
 \arguments{
-\item{arg1}{A short description of the arg1 argument. Must specify: accepted format.}
-
-\item{arg2}{A short description of the arg2 argument. Must specify: accepted format.}
+\item{end_point_argument}{A string (one of "character", "movie", "book", "quotes" etc) that specifies the end point of the lotr API that should be called in the GET request.}
 }
 \value{
-A short description of the output format.
+A dataframe of the data that was returned from the API.
 }
 \description{
-A function for connection with the LOTR API.
+A function for connection with the LOTR API. There is a rate limit: 100 requests per 10 min, or one every 6 seconds.
 }
